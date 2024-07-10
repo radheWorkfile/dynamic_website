@@ -122,8 +122,14 @@
             //  echo "<pre>";
             //  print_r($data);
             //  die;
-
+             if($data['menu_p']['home_page']==1)
+             {
             $this->load->view("website/index", $data);
+             }
+             else{
+                 $this->load->view("website/index_1", $data);
+             }
+
         }
 
         function sub_page($menu_id, $submenu_id)
@@ -133,7 +139,7 @@
             //  print_r($data);
             //  die;
 
-            $this->load->view("website/index", $data);
+            $this->load->view("website/index_1", $data);
         }
 
 

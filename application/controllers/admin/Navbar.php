@@ -15,6 +15,51 @@ class Navbar extends CI_Controller
         error_reporting(0);
     }
 
+    public function manage_upload_image()
+    {
+        $data['title'] = 'Upload Image';
+        $data['breadcrums'] = 'Image Upload';
+        $data['img_upload']=$this->Common_model->image_display_mod();
+      
+       
+        $this->load->view('admin/image_upload/manage_upload_image', $data);
+    }   
+  
+    
+  
+    public function do_upload()
+    {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+           
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file'))
+            {
+                    $error =$this->upload->display_errors();
+            }
+            else
+            {
+                    $datata = $this->upload->data();
+                 
+                $image = $datata['file_name'];
+                    
+            }
+            $data = array(
+                'file' => $image
+            );
+           
+          
+            // $this->db->insert('image_section',$data);
+       $this->Common_model->upload_image_mod($data);
+
+
+        $this->load->view('admin/image_upload/manage_upload_image');
+
+            
+    }
+    
+
     function index()
     {
         $data['title'] = 'Dashboard';

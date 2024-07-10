@@ -1,88 +1,118 @@
-<footer class="bd-footer py-5 mt-5 bg-light">
-  <div class="container py-5">
-    <div class="row">
-
-      <div class="col-lg-3 mb-3">
-        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+        <style>
+.footer-img-man{height:4rem;border: 2px dotted #ff5949;}
+        </style>
+        <!-- Footer Area Start Here -->
+        <footer>
+            <div class="footer-area-top"style="position:relative;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                            <div class="footer-box">
+                                <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
           <img src="<?php echo base_url() . "uploads/logo/" . $logo['logo']; ?>">
         </a>
-
-        <ul class="list-unstyled small text-muted">
-          <li class="mb-2"><?php echo $company['about_company']; ?></li>
-          <?php if (!empty($company['facebook'])) : ?>
-            <span class="mb-2"> <a href="<?php echo $company['facebook']; ?>" target="_blank"><i class="fa fa-facebook-f"></i></a></span>
-          <?php endif; ?>
-
-          <?php if (!empty($company['instagram'])) : ?>
-            <span class="mb-2"> <a href="<?php echo $company['instagram']; ?>" target="_blank"><i class="fa fa-instagram"></i></a></span>
-          <?php endif; ?>
-
-          <?php if (!empty($company['tweeter'])) : ?>
-            <span class="mb-2"> <a href="<?php echo $company['tweeter']; ?>" target="_blank"><i class="fa fa-twitter"></i></a></span>
-          <?php endif; ?>
-
-          <?php if (!empty($company['linkedln'])) : ?>
-            <span class="mb-2"> <a href="<?php echo $company['linkedln']; ?>" target="_blank"><i class="fa fa-linkedin"></i></a></span>
-          <?php endif; ?>
-
-          <?php if (!empty($company['youtube'])) : ?>
-            <span class="mb-2"> <a href="<?php echo $company['youtube']; ?>" target="_blank"><i class="fa fa-youtube"></i></a></span>
-          <?php endif; ?>
-
-          <?php if (!empty($company['whatsapp'])) : ?>
-            <span class="mb-2"> <a href="https://wa.me/<?php echo $company['whatsapp']; ?>" target="_blank"><i class="fa fa-whatsapp"></i></a></span>
-          <?php endif; ?>
-
-
-        </ul>
-      </div>
-
-
-      <div class="col-6 col-lg-2 offset-lg-1 mb-3">
-        <h5>Quick Links</h5>
-        <ul class="list-unstyled">
-          <?php foreach ($menu as $m) : if ($m['child'] == 0) : ?>
-              <li class="mb-2"><a href="<?php echo base_url() . "Website/page/{$m['id']}" ?>"><?php echo $m['menu']; ?></a></li>
-          <?php endif;
-          endforeach; ?>
-        </ul>
-      </div>
-
-
-
-      <div class="col-6 col-lg-2 mb-3">
-        <h5>Projects</h5>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3 mb-3">
-
-        <?php
+                                <div class="footer-about">
+                                    <p style="text-align:justify;"><?php echo $company['about_company']; ?></p>
+                                </div>
+                                <ul class="footer-social">
+                                <?php if (!empty($company['facebook'])) : ?>  <li><a href="<?php echo $company['facebook']; ?> " style="margin-top:-10px;"><i class="fa fa-facebook" aria-hidden="true" ></i></a></li>  <?php endif; ?>
+                                    <?php if (!empty($company['instagram'])) : ?>   <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li><?php endif; ?>
+                                        <?php if (!empty($company['tweeter'])) : ?> <li><a href="<?php echo $company['tweeter']; ?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><?php endif; ?>
+                                            <?php if (!empty($company['linkedln'])) : ?>  <li><a href="<?php echo $company['linkedln']; ?>"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li><?php endif; ?>
+                                                <?php if (!empty($company['youtube'])) : ?><li><a href="<?php echo $company['youtube']; ?>"><i class="fa fa-youtube" aria-hidden="true"></i></a></li><?php endif; ?>
+                                     <?php if (!empty($company['whatsapp'])) : ?> <li><a href="https://wa.me/<?php echo $company['whatsapp']; ?>"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li><?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12" style="padding-left:55px; margin-top:33px;" >
+                            <div class="footer-box">
+                                <h3 style="color:#001a39;">Featured Links</h3>
+                                <ul class="featured-links">
+                                    <li>
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Courses</a></li>
+                                            <li><a href="#">Addmission</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Placement</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                 
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12" style="margin-top:33px;">
+                            <div class="footer-box">
+                                <h3 style="color:#001a39;">Information</h3>
+                                <?php
         $contact1 = explode(",", $contact['contact_number']);
         $email1 = explode(",", $contact['email']);
         ?>
-        <ul class="list-unstyled small text-muted">
-          <li class="mb-2">
-            <h2><?php echo $company['company_name']; ?></h2>
-          </li>
-
-          <li class="mb-2"><?php echo $company['company_address']; ?></li>
-          <?php foreach ($contact1 as  $contact1) : ?>
-            <li class="mb-2"> <i class="fa fa-phone"></i>&nbsp;<?php echo $contact1; ?></li>
-          <?php endforeach; ?>
-          <?php foreach ($email1 as  $email1) : ?>
-            <li class="mb-2"> <i class="fa fa-envelope"></i>&nbsp;<?php echo $email1; ?></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</footer>
-
+                                <ul class="corporate-address">
+                                <?php foreach ($contact1 as  $contact1) : ?>
+                             
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone(01)800433633.html"> &nbsp;<?php echo $contact1; ?></a></li>
+                                <?php endforeach; ?>
+                                <?php foreach ($email1 as  $email1) : ?>
+                                    <li><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;<?php echo $email1; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <div class="newsletter-area">
+                                    <h3 style="color:#001a39;">Newsletter</h3>
+                                    <div class="input-group stylish-input-group">
+                                        <input type="text" placeholder="Enter your e-mail here" class="form-control">
+                                        <span class="input-group-addon">
+                                                <button type="submit">
+                                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                </button>  
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12" style="margin-top:33px;">
+                            <div class="footer-box">
+                                <h3 style="color:#001a39;">Flickr Photos</h3>
+                                <ul class="flickr-photos">
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li><br>
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img class="img-responsive" src="<?php echo base_url();?>uploads/av1.png" alt="flickr"style="height:4rem;border: 2px dotted #ff5949;"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-area-bottom">
+                <div class="container">
+                    <div class="row" >
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <p style="text-align:center;">&copy; 2020 Academics All Rights Reserved. &nbsp; Designed by<a target="_blank" href="javaScript:void(0);" rel="nofollow"> Camwel Solution</a></p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End Here -->

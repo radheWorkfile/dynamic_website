@@ -73,6 +73,34 @@ $menu = $this->uri->segment(3);
                     </ul>
                 </li>
 
+
+
+
+                <li class="nav-item <?= ($controller == "navbar") ? "menu-open" : ''; ?>">
+                    <a href="#" class="nav-link <?= ($controller == "navbar") ? "active" : ''; ?>">
+                        <i class="nav-icon fa fa-bars"></i>
+                        <p>
+                            Upload Image
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('admin/navbar/manage_upload_image') ?>" class="nav-link <?= ($menu == "manage_upload_image") ? "active" : ''; ?>">
+                                <i class="fa fa-arrow-right nav-icon"></i>
+                                <p>Manage Image</p>
+                            </a>
+                        </li>
+                       
+
+
+
+                    </ul>
+                </li>
+
+
+             
+
               
 
 

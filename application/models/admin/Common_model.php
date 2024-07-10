@@ -11,6 +11,12 @@ class Common_model extends CI_Model
         return $this->db->insert($table, $val);
     }
 
+    public function image_display_mod()
+    {
+        $this->db->select('*');
+        $this->db->from('image_section');
+        return $this->db->get()->result_array();
+    }
     function all_data($table,$sel)
     {
         return $this-> db->select($sel)->order_by('id', 'DESC')->get($table)->result_array();
@@ -141,5 +147,10 @@ class Common_model extends CI_Model
         $Rupees = implode('', array_reverse($str));
         $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
         return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise;
+    }
+
+    public function upload_image_mod($data)
+    {
+        $this->db->insert('image_section',$data);
     }
 }
