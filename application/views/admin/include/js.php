@@ -1,0 +1,123 @@
+<script src="<?= base_url() ?>media/css/plugin/sweetalert/sweetalert2.min.js"></script>
+<script src="<?= base_url() ?>media/js/jquery.min.js"></script>
+<script src="<?= base_url() ?>media/js/jquery-ui.min.js"></script>
+<script src="<?= base_url() ?>media/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url() ?>media/js/adminlte.js"></script>
+<script src="<?= base_url() ?>media/js/common.js"></script>
+<script src="<?= base_url() ?>media/js/js.js"></script>
+
+
+<!-- Select2 -->
+<script src="<?= base_url() ?>media/css/plugin/select2/select2.full.min.js"></script>
+
+
+<!-- DataTables  & Plugins -->
+
+<script src="<?= base_url() ?>media/css/plugin/datatable/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/dataTables.responsive.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/jszip.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/pdfmake.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/vfs_fonts.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/buttons.html5.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/buttons.print.min.js"></script>
+<script src="<?= base_url() ?>media/css/plugin/datatable/buttons.colVis.min.js"></script>
+
+
+
+
+
+
+<script type="text/javascript">
+    var Toast =
+        Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    /*  */
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.myselect').select2({
+            theme: 'bootstrap4'
+        })
+    })
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+
+        //Check for PM and AM
+        var day_or_night = (h > 11) ? "PM" : "AM";
+
+        //Convert to 12 hours system
+        if (h > 12)
+            h -= 12;
+
+        //Add time to the headline and update every 500 milliseconds
+        $('#time').html(h + ":" + m + ":" + s + " " + day_or_night);
+        setTimeout(function() {
+            startTime()
+        }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+</script>
+
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["excel", "pdf", "print"] //"copy", "csv", , "colvis"
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
+
+
+
+
+<!-- summernote js added by mhuammad -->
+<script src="<?= base_url() ?>media/js/summernote.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // alert("hello muhammad");
+        // // $('#summerno').summernote();
+       
+        $("#summern").keyup(function(){
+            alert("hello");
+        });
+        console.error();
+    });
+</script>
+
+
+<script>
+      $(document).ready(function() {
+          $('.summernote').summernote({
+              width: 1100, //don't use px
+          });
+      });
+  </script>
+
+
+

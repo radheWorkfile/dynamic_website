@@ -1,0 +1,172 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Seo extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('admin/common_model', 'Common_model');
+
+        date_default_timezone_set("Asia/Calcutta");
+
+        ($this->session->userdata('user_cate') != 1) ? redirect(base_url(), 'refresh') : '';
+        error_reporting(0);
+    }
+
+    function permission()
+    {
+        $con = array("id" => 1);
+        $data['navbar'] = $this->Common_model->get_data("navbar", $con, "*");
+        $data['banner_p'] = $this->Common_model->get_data("banner", $con, "*");
+        $data['seo_p'] = $this->Common_model->get_data("seo", $con, "*");
+
+
+        return $data;
+    }
+
+   
+
+
+
+
+    function off()
+    {
+        $msg = array("sowmthing went wrong");
+        if ($this->input->is_ajax_request()) {
+            $val = $this->input->post();
+            $con = array("id" => $val['id'],'submenu_id'=> $val['submenu_id']);
+            $data = array("seo" => 0);
+            if ($this->Common_model->update_data("admin_3rd_menu", $con, $data)) {
+                $data = array("text" => "seo Off", "icon" => "success");
+            } else {
+                $data = array("text" =>  $msg, "icon" => "error");
+                
+            }
+        } else {
+            $data = array("text" =>  $msg, "icon" => "error");
+        }
+       
+
+        echo json_encode($data);
+    }
+
+
+    function on()
+    {
+       
+        $msg = array("sowmthing went wrong");
+
+        if ($this->input->is_ajax_request()) {
+            $val = $this->input->post();
+            $con = array("id" => $val['id'],'submenu_id'=> $val['submenu_id']);
+
+            $data = array("seo" => 1);
+            if ($this->Common_model->update_data("admin_3rd_menu", $con, $data)) {
+               
+                $data = array("text" => "seo On", "icon" => "success");
+            } else {
+                $data = array("text" => $msg, "icon" => "error");
+            }
+        } else {
+            $data = array("text" => $msg, "icon" => "error");
+        }
+      
+
+
+        echo json_encode($data);
+    }
+
+    function  get_seo()
+    {
+
+
+        if ($this->input->is_ajax_request()) {
+            $val = $this->input->post();
+            $con = array( "child_submenu_id"=>$val["id"], "submenu_id"=>$val['submenu_id']);
+            $data = $this->permission();
+            $seo = $this->Common_model->get_data("admin_seo",$con,"*");
+            // $data['total_banner'] = $this->Common_model->all_data("admin_banner", "*");
+            if(!empty($seo))
+            {
+                $data['seo']=$seo;
+            }
+            else{
+                $data['seo']=$con;
+            }         
+            // print_r($data['seo']);
+           
+           
+            $this->load->view("admin/page/child_submenu_page/seo_section/edit_seo", $data);
+        }
+    }
+
+    function update()
+    {
+        $msg=array(" Something went wrong");
+        if($this->input->is_ajax_request())
+        {
+         $val=$this->input->post();
+         if($val["id"]==true)
+         {
+             // update the summernote data
+             $con=array("id"=>$val['id']);
+            $dat=array(
+                "child_submenu_id"     =>$val['child_submenu_id'],
+                "submenu_id"           =>$val['submenu_id'],
+                "page_title"             =>$val['title'],
+                "meta_description"       =>$val['description'],
+                "meta_keywords"          =>$val['keywords'],
+            );
+
+            if($this->Common_model->update_data("admin_seo",$con,$dat))
+            {
+                $data=array("text"=>"updated Successfully","icon"=>"success");
+            }
+            else{
+                $data = array("text" =>$msg, "icon" => "error");
+                }
+         }
+         else{
+            // insert new summernote data
+            $dat=array(
+                "child_submenu_id"          =>$val['child_submenu_id'],
+                "submenu_id"                =>$val['submenu_id'],
+                "page_title"                =>$val['title'],
+                "meta_description"          =>$val['description'],
+                "meta_keywords"             =>$val['keywords'],
+                "status"                    =>1,
+                "created_at"                =>date("y-m-d H:i:s"),
+            );
+           
+            if($this->Common_model->save_data("admin_seo", $dat))
+            {
+                $data = array("text" => " uploaded succesfully", "icon" => "success");
+            }
+            else{
+            $data = array("text" =>$msg, "icon" => "error");
+            }
+         }
+        
+        }
+        else
+        {
+           $data = array("text" => $msg, "icon" => "error");
+        
+                 
+        }
+
+        echo json_encode($data);
+    }
+
+
+
+
+
+
+
+   
+
+
+
+}
